@@ -1,0 +1,12 @@
+# config.yaml
+data_source: './data/my_data.csv'    # Path to your local CSV file
+output_index: './models/faiss_index.bin'  # Local path to save the FAISS index
+output_embeddings: './models/data_with_embeddings.pkl'  # Local path to save embeddings
+
+# Model settings
+model_name: 'sentence-transformers/all-MiniLM-L6-v2'
+model_directory: 'sentence-transformers/all-MiniLM-L6-v2'  # Directory to store/load model
+clean_up_tokenization_spaces: False
+
+# Training settings
+batch_size: 32

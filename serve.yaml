@@ -1,0 +1,5 @@
+# serve.yaml
+index_path: './models/faiss_index.bin'
+embeddings_path: './models/data_with_embeddings.pkl'
+port: 8000
+replicas: 1
