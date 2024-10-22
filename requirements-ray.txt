@@ -1,0 +1,7 @@
+pandas>=2.0.3
+transformers>=4.32.0
+torch>=2.0.1
+faiss-cpu>=1.7.4
+ray[serve]>=2.6.0
+# gunicorn==21.0.0   # Optional for better handling of HTTP requests in production
+# fastapi==0.96.0    # For using FastAPI with Ray Serve (already included with ray[serve])
