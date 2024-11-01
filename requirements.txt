@@ -1,6 +1,9 @@
+numpy
 pandas>=2.0.3
 transformers>=4.32.0
 torch>=2.0.1
 faiss-cpu>=1.7.4
 fastparquet
 fastapi
+uvicorn 
+pyyaml
