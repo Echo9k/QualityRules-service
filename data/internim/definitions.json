@@ -1,0 +1,340 @@
+[
+	{
+        "RuleID": "DQRC0001",
+        "Description": "Checks that the value in `<cde>` is not null and contains non-whitespace characters.",
+        "Condition/Logic": "`<cde>` is non-null and contains non-whitespace characters.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate for non-null and non-whitespace values."
+        },
+        "Example": "If `<cde>` = `Name` and `Name` = `John`, return `True`. If `Name` = `null`, return `False`.",
+        "Category": "Completeness",
+        "Categorization": "Completeness / Non-Null Check"
+    },
+    {
+        "RuleID": "DQRA0194",
+        "Description": "Ensures that `<cde>` exists in `<#>catalog<#>` based on `<#>key<#>`, but only if `<#>Column1<#>` is in `<#>Lista<#>`.",
+        "Condition/Logic": "`<cde>` exists in `<#>catalog<#>` keyed by `<#>key<#>` if `<#>Column1<#>` is in `<#>Lista<#>`. Else `True`.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate.",
+            "<#>DependentColumn<#>": "Column triggering the validation.",
+            "<#>ListAllowed<#>": "Allowed values triggering validation.",
+            "<#>catalog<#>": "Catalog to validate against.",
+            "<#>key<#>": "Key to lookup in catalog."
+        },
+        "Example": "If `<#>DependentColumn<#>`=`VIP` and `<#>ListAllowed<#>`=`[VIP, PREMIUM]`, then `<#>ColumnToCheck<#>` must be in catalog.",
+        "Category": "Catalog Check",
+        "Categorization": "Value List / Catalog Membership"
+    },
+    {
+        "RuleID": "DQRV0020",
+        "Description": "Compares `<cde>` with `<#>Column1<#>` as dates, using formats `<#>frmtDte1<#>` and `<#>frmtDte2<#>`.",
+        "Condition/Logic": "Parse `<cde>` using `<#>frmtDte1<#>` and `<#>Column1<#>` using `<#>frmtDte2<#>`, compare using `<#>Operator<#>`.",
+        "Parameters": {
+            "<#>ColumnToCheck1<#>": "The first date column to validate.",
+            "<#>frmtDte1<#>": "Date format of `<#>ColumnToCheck1<#>`.",
+            "<#>ColumnToCheck2<#>": "The second date column to validate.",
+            "<#>frmtDte2<#>": "Date format of `<#>ColumnToCheck2<#>`.",
+            "<#>Operator<#>": "Comparison operator (`==`, `>`, `<`, etc.)."
+        },
+        "Example": "If `<#>Operator<#>`=`==` and both dates parse to the same day, return `True`. Else `False`.",
+        "Category": "Date Check",
+        "Categorization": "Date Validation and Comparisons"
+    },
+	{
+        "RuleID": "DQRU0004",
+        "Description": "Ensures that `<cde>` does not contain duplicate values.",
+        "Condition/Logic": "`<cde>` must not have any duplicate values within the dataset.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate for unique values."
+        },
+        "Example": "If `<cde>`=`ID` and `ID`=[1, 2, 3, 3], return `False`. If `ID`=[1, 2, 3], return `True`.",
+        "Category": "Uniqueness Check",
+        "Categorization": "Uniqueness / Duplicate Checks"
+    },
+    {
+        "RuleID": "DQRF0005",
+        "Description": "Validates that the length of the value in `<cde>` satisfies a specified condition (`<#>Operator<#>` and `<#>length<#>`).",
+        "Condition/Logic": "The length of `<cde>` must satisfy `<#>Operator<#>` `<#>length<#>`.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate.",
+            "<#>Operator<#>": "Comparison operator (e.g., `>`, `>=`, `<`, etc.).",
+            "<#>length<#>": "The threshold for length validation."
+        },
+        "Example": "If `<cde>`=`Name` and `<#>Operator<#>`=`>` `<#>length<#>`=`5`, then `Name`=`'John'` returns `False`. If `Name`=`'Jonathan'`, return `True`.",
+        "Category": "Length Check",
+        "Categorization": "Data Type / Numeric / Length Constraints"
+    },
+    {
+        "RuleID": "DQRF0037",
+        "Description": "Applies a regex pattern (`<#>pattern<#>`) to validate the value in `<cde>`. Null values are replaced with an empty string before applying the regex.",
+        "Condition/Logic": "`<cde>` must match the provided `<#>pattern<#>` after replacing nulls with an empty string.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate.",
+            "<#>pattern<#>": "The regex pattern to apply."
+        },
+        "Example": "If `<cde>`=`Code` and `<#>pattern<#>`=`^[A-Z]{3}[0-9]{4}$`, then `Code`=`'ABC1234'` returns `True`. `Code`=`'123ABCD'` returns `False`.",
+        "Category": "Pattern Matching",
+        "Categorization": "Pattern Matching / Regex Validation"
+    },
+    {
+        "RuleID": "DQRI0106",
+        "Description": "Ensures that `<cde>` falls between `<#>Column2<#>` and `<#>Column1<#>` (inclusive) if `<cde>` is not in a specified list (`<#>Lista<#>`). Otherwise, the rule passes.",
+        "Condition/Logic": "`<cde>` must satisfy `<#>Column2<#> <= <cde> <= <#>Column1<#>` if `<cde>` is not in `<#>Lista<#>`. Else `True`.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The target column to validate.",
+            "<#>Column1<#>": "The upper bound column.",
+            "<#>Column2<#>": "The lower bound column.",
+            "<#>Lista<#>": "List of values to exclude from the rule."
+        },
+        "Example": "If `<cde>`=`Score`=`50`, `<#>Column2<#>`=`40`, `<#>Column1<#>`=`60`, return `True`. If `Score`=`35`, return `False`.",
+        "Category": "Range Check",
+        "Categorization": "Conditional Checks Based on Other Columns"
+    },{
+        "RuleID": "DQRC0044",
+        "Description": "Checks if the value in `<cde>` is non-null and contains non-whitespace characters. Ensures completeness of the field.",
+        "Condition/Logic": "`<cde>` must be non-null and contain characters other than whitespace.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate for non-null and non-whitespace values."
+        },
+        "Example": "If `<cde>`=`Address` and `Address`=`'123 Main St'`, return `True`. If `Address`=`'    '` or `null`, return `False`.",
+        "Category": "Completeness",
+        "Categorization": "Completeness / Non-Null Check"
+    },
+    {
+        "RuleID": "DQRF0006",
+        "Description": "Ensures that the length of `<cde>` falls between `<#>length_min<#>` and `<#>length_max<#>`, satisfying conditions `<#>Operator1<#>` and `<#>Operator2<#>`.",
+        "Condition/Logic": "`<#>length_min<#>` `<#>Operator1<#>` length of `<cde>` `<#>Operator2<#>` `<#>length_max<#>`.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate.",
+            "<#>length_min<#>": "Minimum length allowed.",
+            "<#>Operator1<#>": "Comparison operator for the minimum length.",
+            "<#>length_max<#>": "Maximum length allowed.",
+            "<#>Operator2<#>": "Comparison operator for the maximum length."
+        },
+        "Example": "If `<cde>`=`Name`, `<#>length_min<#>`=`5`, `<#>Operator1<#>`=`>=`, `<#>length_max<#>`=`10`, `<#>Operator2<#>`=`<=`, then `Name`=`'Jonathan'` returns `True`. `Name`=`'Joe'` returns `False`.",
+        "Category": "Length Check",
+        "Categorization": "Data Type / Numeric / Length Constraints"
+    },
+    {
+        "RuleID": "DQRF0178",
+        "Description": "Ensures that `<cde>` does not contain a decimal part with more than a specified number of digits (`<#>DecimalComplement<#>`).",
+        "Condition/Logic": "The decimal part of `<cde>` must have at most `<#>DecimalComplement<#>` digits.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate.",
+            "<#>DecimalComplement<#>": "Maximum number of digits allowed in the decimal part."
+        },
+        "Example": "If `<cde>`=`Amount` and `<#>DecimalComplement<#>`=`2`, then `Amount`=`123.45` returns `True`, `Amount`=`123.456` returns `False`.",
+        "Category": "Numeric Validation",
+        "Categorization": "Data Type / Numeric / Length Constraints"
+    },
+    {
+        "RuleID": "DQRV0014",
+        "Description": "Ensures that `<cde>` matches a numeric format with up to 14 digits before the decimal and exactly 2 digits after.",
+        "Condition/Logic": "`<cde>` must match the pattern `\\d{1,14}\\.\\d{2}`.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate."
+        },
+        "Example": "If `<cde>`=`Balance` and `Balance`=`12345678901234.56`, return `True`. If `Balance`=`123456.789`, return `False`.",
+        "Category": "Pattern Matching",
+        "Categorization": "Pattern Matching / Regex Validation"
+    },
+    {
+        "RuleID": "DQRV0009",
+        "Description": "Checks if `<cde>` is present in a catalog (`<#>catalog<#>`) for a specific key (`<#>key<#>`).",
+        "Condition/Logic": "`<cde>` must exist in `<#>catalog<#>` keyed by `<#>key<#>`.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate.",
+            "<#>catalog<#>": "Catalog to validate against.",
+            "<#>key<#>": "Key for the catalog lookup."
+        },
+        "Example": "If `<cde>`=`ProductID`, `<#>catalog<#>` contains `{'ID': [1, 2, 3]}` and `ProductID`=`2`, return `True`. If `ProductID`=`5`, return `False`.",
+        "Category": "Catalog Check",
+        "Categorization": "Value List / Catalog Membership"
+    },
+	    {
+        "RuleID": "DQRF0030",
+        "Description": "Validates that `<cde>` contains at least three consecutive 'A' characters.",
+        "Condition/Logic": "`<cde>` must have at least three consecutive 'A' characters.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate."
+        },
+        "Example": "If `<cde>`=`Code` and `Code`=`'BAAAC'`, return `True`. If `Code`=`'BAC'`, return `False`.",
+        "Category": "Pattern Matching",
+        "Categorization": "Pattern Matching / Regex Validation"
+    },
+    {
+        "RuleID": "DQRC0094",
+        "Description": "Ensures `<cde>` is non-null and non-empty when `<#>Column1<#>` and `<#>Column2<#>` belong to their respective lists `<#>Lista<#>` and `<#>Lista1<#>`.",
+        "Condition/Logic": "`<cde>` must not be null or empty if `<#>Column1<#>` in `<#>Lista<#>` and `<#>Column2<#>` in `<#>Lista1<#>`. Otherwise, return `True`.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate.",
+            "<#>Column1<#>": "First dependent column.",
+            "<#>Lista<#>": "Valid values for `<#>Column1<#>`.",
+            "<#>Column2<#>": "Second dependent column.",
+            "<#>Lista1<#>": "Valid values for `<#>Column2<#>`."
+        },
+        "Example": "If `<#>Column1<#>`=`A`, `<#>Lista<#>`=`[A, B]`, `<#>Column2<#>`=`X`, `<#>Lista1<#>`=`[X, Y]`, and `<cde>`=`null`, return `False`. Else `True`.",
+        "Category": "Conditional Completeness",
+        "Categorization": "Conditional Checks Based on Other Columns"
+    },
+    {
+        "RuleID": "DQRV0002",
+        "Description": "Validates that `<cde>` satisfies a numeric comparison (`<#>Operator<#>` and `<#>compare<#>`).",
+        "Condition/Logic": "`<cde>` must satisfy `<#>Operator<#>` `<#>compare<#>`.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate.",
+            "<#>Operator<#>": "Comparison operator (`>`, `>=`, `<`, `<=`, `==`, etc.).",
+            "<#>compare<#>": "The value to compare against."
+        },
+        "Example": "If `<cde>`=`Score`, `<#>Operator<#>`=`>=`, and `<#>compare<#>`=`50`, then `Score`=`45` returns `False`. `Score`=`55` returns `True`.",
+        "Category": "Numeric Validation",
+        "Categorization": "Data Type / Numeric / Length Constraints"
+    },
+    {
+        "RuleID": "DQRV0023",
+        "Description": "Checks if `<cde>` is part of a specified list (`<#>Lista<#>`).",
+        "Condition/Logic": "`<cde>` must be in `<#>Lista<#>`.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate.",
+            "<#>Lista<#>": "The list of allowed values."
+        },
+        "Example": "If `<cde>`=`Category` and `<#>Lista<#>`=`['A', 'B', 'C']`, then `Category`=`'A'` returns `True`. `Category`=`'D'` returns `False`.",
+        "Category": "List Validation",
+        "Categorization": "Value List / Catalog Membership"
+    },
+    {
+        "RuleID": "DQRF0077",
+        "Description": "Validates that `<cde>` represents a valid date in the format `YYYYMMDD`. Checks year, month, and day ranges.",
+        "Condition/Logic": "`<cde>` must match `YYYYMMDD` format and have valid year (`>= 1900`), month (`1-12`), and day (`1-31`).",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate."
+        },
+        "Example": "If `<cde>`=`Date` and `Date`=`'20231215'`, return `True`. If `Date`=`'20230230'`, return `False`.",
+        "Category": "Date Validation",
+        "Categorization": "Date Validation and Comparisons"
+    },
+	    {
+        "RuleID": "DQRF0037",
+        "Description": "Validates `<cde>` against a regex pattern (`<#>pattern<#>`). Null values are replaced with an empty string before applying the regex.",
+        "Condition/Logic": "`<cde>` must match the provided `<#>pattern<#>`.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate.",
+            "<#>pattern<#>": "The regex pattern for validation."
+        },
+        "Example": "If `<cde>`=`Code` and `<#>pattern<#>`=`^[A-Z]{3}[0-9]{4}$`, then `Code`=`'ABC1234'` returns `True`. `Code`=`'123ABCD'` returns `False`.",
+        "Category": "Pattern Matching",
+        "Categorization": "Pattern Matching / Regex Validation"
+    },
+    {
+        "RuleID": "DQRU0127",
+        "Description": "Ensures `<cde>` does not contain duplicate values.",
+        "Condition/Logic": "All values in `<cde>` must be unique.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate for uniqueness."
+        },
+        "Example": "If `<cde>`=`ID` and `ID`=[1, 2, 3, 3], return `False`. If `ID`=[1, 2, 3], return `True`.",
+        "Category": "Uniqueness Check",
+        "Categorization": "Uniqueness / Duplicate Checks"
+    },
+    {
+        "RuleID": "DQRV0020",
+        "Description": "Compares `<cde>` with `<#>Column1<#>` as dates using formats `<#>frmtDte1<#>` and `<#>frmtDte2<#>`.",
+        "Condition/Logic": "`<cde>` and `<#>Column1<#>` must satisfy the comparison `<#>Operator<#>` after being parsed as dates.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The primary column to validate.",
+            "<#>Column1<#>": "The second column for comparison.",
+            "<#>frmtDte1<#>": "Date format for `<cde>`.",
+            "<#>frmtDte2<#>": "Date format for `<#>Column1<#>`.",
+            "<#>Operator<#>": "Comparison operator (`==`, `<`, `<=`, `>`, `>=`)."
+        },
+        "Example": "If `<cde>`=`'20231215'`, `<#>Column1<#>`=`'20231216'`, `<#>Operator<#>`=`<`, return `True`. If `>=`, return `False`.",
+        "Category": "Date Validation",
+        "Categorization": "Date Validation and Comparisons"
+    },
+    {
+        "RuleID": "DQRF0175",
+        "Description": "Ensures `<cde>` does not contain any character from a specified list (`<#>Lista<#>`).",
+        "Condition/Logic": "`<cde>` must not contain any character in `<#>Lista<#>`.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate.",
+            "<#>Lista<#>": "List of invalid characters."
+        },
+        "Example": "If `<cde>`=`Name` and `<#>Lista<#>`=`['$', '@']`, then `Name`=`'John$'` returns `False`. `Name`=`'John'` returns `True`.",
+        "Category": "Character Validation",
+        "Categorization": "Data Validity Checks"
+    },
+    {
+        "RuleID": "DQRI0108",
+        "Description": "Ensures `<cde>` is strictly greater than `<#>Column2<#>`.",
+        "Condition/Logic": "`<cde>` must satisfy `<cde>` > `<#>Column2<#>`.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate.",
+            "<#>Column2<#>": "The second column for comparison."
+        },
+        "Example": "If `<cde>`=`Score`=`60` and `<#>Column2<#>`=`50`, return `True`. If `Score`=`50`, return `False`.",
+        "Category": "Numeric Comparison",
+        "Categorization": "Conditional Checks Based on Other Columns"
+    },
+    {
+        "RuleID": "DQRF0037",
+        "Description": "Validates `<cde>` against a regex pattern (`<#>pattern<#>`). Null values are replaced with an empty string before applying the regex.",
+        "Condition/Logic": "`<cde>` must match the provided `<#>pattern<#>`.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate.",
+            "<#>pattern<#>": "The regex pattern for validation."
+        },
+        "Example": "If `<cde>`=`Code` and `<#>pattern<#>`=`^[A-Z]{3}[0-9]{4}$`, then `Code`=`'ABC1234'` returns `True`. `Code`=`'123ABCD'` returns `False`.",
+        "Category": "Pattern Matching",
+        "Categorization": "Pattern Matching / Regex Validation"
+    },
+    {
+        "RuleID": "DQRU0127",
+        "Description": "Ensures `<cde>` does not contain duplicate values.",
+        "Condition/Logic": "All values in `<cde>` must be unique.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate for uniqueness."
+        },
+        "Example": "If `<cde>`=`ID` and `ID`=[1, 2, 3, 3], return `False`. If `ID`=[1, 2, 3], return `True`.",
+        "Category": "Uniqueness Check",
+        "Categorization": "Uniqueness / Duplicate Checks"
+    },
+    {
+        "RuleID": "DQRV0020",
+        "Description": "Compares `<cde>` with `<#>Column1<#>` as dates using formats `<#>frmtDte1<#>` and `<#>frmtDte2<#>`.",
+        "Condition/Logic": "`<cde>` and `<#>Column1<#>` must satisfy the comparison `<#>Operator<#>` after being parsed as dates.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The primary column to validate.",
+            "<#>Column1<#>": "The second column for comparison.",
+            "<#>frmtDte1<#>": "Date format for `<cde>`.",
+            "<#>frmtDte2<#>": "Date format for `<#>Column1<#>`.",
+            "<#>Operator<#>": "Comparison operator (`==`, `<`, `<=`, `>`, `>=`)."
+        },
+        "Example": "If `<cde>`=`'20231215'`, `<#>Column1<#>`=`'20231216'`, `<#>Operator<#>`=`<`, return `True`. If `>=`, return `False`.",
+        "Category": "Date Validation",
+        "Categorization": "Date Validation and Comparisons"
+    },
+    {
+        "RuleID": "DQRF0175",
+        "Description": "Ensures `<cde>` does not contain any character from a specified list (`<#>Lista<#>`).",
+        "Condition/Logic": "`<cde>` must not contain any character in `<#>Lista<#>`.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate.",
+            "<#>Lista<#>": "List of invalid characters."
+        },
+        "Example": "If `<cde>`=`Name` and `<#>Lista<#>`=`['$', '@']`, then `Name`=`'John$'` returns `False`. `Name`=`'John'` returns `True`.",
+        "Category": "Character Validation",
+        "Categorization": "Data Validity Checks"
+    },
+    {
+        "RuleID": "DQRI0108",
+        "Description": "Ensures `<cde>` is strictly greater than `<#>Column2<#>`.",
+        "Condition/Logic": "`<cde>` must satisfy `<cde>` > `<#>Column2<#>`.",
+        "Parameters": {
+            "<#>ColumnToCheck<#>": "The column to validate.",
+            "<#>Column2<#>": "The second column for comparison."
+        },
+        "Example": "If `<cde>`=`Score`=`60` and `<#>Column2<#>`=`50`, return `True`. If `Score`=`50`, return `False`.",
+        "Category": "Numeric Comparison",
+        "Categorization": "Conditional Checks Based on Other Columns"
+    }
+]

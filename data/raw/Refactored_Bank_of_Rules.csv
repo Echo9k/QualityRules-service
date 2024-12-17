@@ -1,0 +1,149 @@
+RuleID,Description
+DQRA0194,"Ensures that the value in <cde> exists in a specified catalog (<#>catalog<#>) based on a key (<#>key<#>), but only if the value in <#>Column1<#> is part of a given list (<#>Lista<#>). If not in the list, the rule returns True without checking."
+DQRAI0094,"Verifies that the value in <cde> starts with a specified prefix (<#>startIndx<#>). Returns True if the condition is met; otherwise, returns False."
+DQRC0001,Checks that the value in <cde> is not null and contains non-whitespace characters. This ensures completeness and validity of the field.
+DQRC0001_01,Similar to DQRC0001 but applies the completeness and validity check to <#>Column1<#> instead of <cde>.
+DQRC0001_02,"Completeness check for <cde>, where missing values are first replaced in <#>bde_risk<#> with a default value (' '), ensuring non-null and non-empty values after substitution."
+DQRC0001_02_B,"Performs a completeness check on <cde>, with additional conditions: <bde_fec> must be less than a specific value (fec_v) and <bde_risk> must equal a specific value (risk_v). Missing values in <bde_cis> and <bde_risk> are replaced with defaults (0 and ' ', respectively)."
+DQRC0001_03,"Checks that <cde> belongs to a specific list of valid values (<#>ListValues1<#>) only if <#>bde_risk<#> is part of another list (<#>List1<#>). If <#>bde_risk<#> does not match the list, the rule returns True."
+DQRC0001_4,"Ensures <cde> is non-null and non-empty, but only if <#>Column1<#> meets a specified condition (<#>Operator1<#> <#>Value1<#>). Otherwise, the rule passes without further checks."
+DQRC0001_41,Checks for null values in <cde> only when <#>Column1<#> satisfies a numerical condition defined by <#>Operator1<#> and <#>Value1<#>.
+DQRC0001_6,"Ensures <cde> is not null, while also verifying that <#>Column1<#> satisfies a specified condition (<#>Operator<#> <#>Value<#>)."
+DQRC0002,Validates that the first segment (before the first space) of the value in <cde> has a length equal to <#>NoChars<#>.
+DQRC0021,"Checks if the value in <cde> is null. Returns True if null, and False otherwise."
+DQRC0025_2,"Ensures that if <#>TipoPersona<#> equals <#>Fisica<#>, the value in <cde> must not be null. Otherwise, the rule passes."
+DQRC0044,Checks if the value in <cde> is non-null and contains non-whitespace characters. Ensures completeness of the field.
+DQRC0055,"Similar to DQRC0025_2, but checks that <cde> is not null when <#>TipoPersona<#> equals <#>Fisica<#>."
+DQRC0068,Validates that <#>Column1<#> is non-null and contains non-whitespace characters. Ensures the field is complete.
+DQRC0074,"Ensures <#>Column1<#> is non-null and non-empty only when <cde> is null or empty. Otherwise, the rule passes."
+DQRC0081,"Similar to DQRC0074, but focuses on validating <#>Column1<#> only when <cde> is null or empty. Ensures consistency between the two columns."
+DQRC0093,"Checks that <cde> is non-null and non-empty when <#>Column1<#>, <#>Column2<#>, and <#>Column3<#> all belong to their respective lists <#>Lista<#>, <#>Lista1<#>, and <#>Lista2<#>. Otherwise, the rule passes."
+DQRC0094,Similar to DQRC0093 but considers only <#>Column1<#> and <#>Column2<#> against <#>Lista<#> and <#>Lista1<#>. Ensures <cde> is non-null and non-empty if the condition is met.
+DQRC0118,"Ensures that <cde> is non-null and non-empty, but only if <#>Column1<#>, <#>Column2<#>, and <#>Column3<#> are all non-null and meet their respective minimum character length conditions. If any of these conditions are not met, the rule passes."
+DQRC0120,Validates that the value in <cde> is neither null nor the string 'None'. This ensures the field contains valid and meaningful data.
+DQRC0179,"Ensures <cde> is non-null and non-empty when <#>Column1<#> equals 'MEXICO'. Otherwise, the rule passes without validation."
+DQRC0274,Validates <#>Column1<#> to be non-null and non-empty only when <cde> is null or empty. Ensures consistency between the two columns.
+DQRCY0012,Compares the stripped string value of <cde> against the stripped value of <#>Column1<#> using a specified operator (<#>Operator<#>). Ensures both fields meet the operator condition.
+DQRCY0013,Compares the value of <cde> against <#>Column1<#> using a specified operator (<#>Operator<#>). Validates their relationship based on the operator.
+DQRCY0013_1,"Validates <cde> against <#>Column2<#> using a specified operator (<#>Operator1<#>), but only if <#>Column1<#> belongs to a given list (<#>ListValues1<#>). Otherwise, the rule passes."
+DQRCY0017,Compares the float value of <cde> against the float value of <#>Column1<#> using a specified operator (<#>Operator<#>). Ensures numerical consistency between the fields.
+DQRCY0020,Checks that <#>Column1<#> is in a list of valid values (<#>ListValues1<#>) and <cde> belongs to another list (<#>ListValues2<#>). Both conditions must be met for the rule to pass.
+DQRCY0027,"Specifies that the column <cde> corresponds to the data element ""DataElement."" This acts as a metadata mapping rule."
+DQRCY0042,"Ensures that if <#>TipoPersona<#> equals <#>Fisica<#>, then the value in <cde> should match the end of the value in <#>Column1<#>. Null values in <#>Column1<#> are replaced with ~ before checking."
+DQRCY0043,"Ensures that if <#>TipoPersona<#> equals <#>Fisica<#>, then the value in <cde> should match the beginning of the value in <#>Column1<#>. Null values in <#>Column1<#> are replaced with ~ before checking."
+DQRCY0053,"Checks if the date in <cde> matches the date in <#>Column1<#>, ensuring the difference in days between the two dates is zero. The comparison uses specified date formats <#>frmtCDEDte<#> and <#>frmtColumnDte<#>."
+DQRCY0054,"Ensures that if <#>TipoPersona<#> equals <#>Fisica<#>, the value in <cde> must be equal to the value in <#>Column1<#>."
+DQRCY0061,Validates that the beginning characters of <#>Column1<#> match any characters in <cde>. Null values in <#>Column1<#> are replaced with ~ before the match.
+DQRCY0062,Validates that the ending characters of <#>Column1<#> match any characters in <cde>. Null values in <#>Column1<#> are replaced with ~ before the match.
+DQRCY0073,Compares <cde> and <#>Column1<#> using a specified operator (<#>Operator<#>) if <#>Column1<#> matches a given pattern (<#>pattern<#>) or <cde> is non-empty. Null values are replaced with an empty string for validation.
+DQRCY0091,"Ensures that the beginning of <#>Column1<#> matches a transformed version of <cde>, with a placeholder for incomplete pattern logic."
+DQRCY0092,Checks if the ending characters of <#>Column1<#> match any characters in <cde>. Null values in <#>Column1<#> are replaced with ~ before the match.
+DQRCY0093,"Verifies that every word in <cde> exists in <#>Column1<#>, ignoring case sensitivity. Ensures all words are found in the target column."
+DQRCY0094,"Ensures that the values in <cde> and <#>ColumnID<#> are the same, leveraging the ExecutionRules.sameValue function for comparison."
+DQRCY0095,"Validates that all values within a group, defined by <cde>, are unique in <#>Column<#>. This ensures consistency within each group."
+DQRCY0096,"Ensures that for each group defined by <cde>, the combination of values in <#>Column1<#> and <#>Column2<#> is unique. A unique identifier is created by concatenating these two columns."
+DQRCY0097,"Validates that for each unique combination of <#>Column1<#> and <#>Column2<#>, the values in <cde> are unique. A combined identifier is created for grouping."
+DQRCY0098,"Similar to DQRCY0096 but includes <#>Column3<#> in the unique identifier. Ensures the combination of <#>Column1<#>, <#>Column2<#>, and <#>Column3<#> is unique for each <cde>."
+DQRCY0099,"Similar to DQRCY0097 but includes <#>Column3<#> in the unique identifier. Validates that for each unique combination of <#>Column1<#>, <#>Column2<#>, and <#>Column3<#>, the values in <cde> are unique."
+DQRCY0100,"Checks that if <#>Column1<#> is not in a specified list (<#>List<#>), the value in <cde> must be a whole number. Ensures compliance with specific numeric constraints based on the column condition."
+DQRF0005,Validates that the length of the value in <cde> satisfies the specified condition (<#>Operator<#>) relative to a threshold (<#>length<#>). Ensures compliance with length constraints.
+DQRF0005_01,"Checks the length of <cde> based on the value in <#>Column1<#>. If <#>Column1<#> equals <#>pais<#>, one operator and threshold (<#>Operator1<#> and <#>length1<#>) are applied; otherwise, a different operator and threshold (<#>Operator2<#> and <#>length2<#>) are used."
+DQRF0005_02,"Ensures the length of <cde> satisfies the specified condition (<#>Operator<#> and <#>length<#>), or that <cde> equals a specific string (<#>ConditionalStr<#>)."
+DQRF0005_03,Validates that the length of <cde> satisfies the specified condition (<#>Operator<#> and <#>length<#>) only if <#>Column1<#> is in a specified list (<#>lista<#>).
+DQRF0006,"Ensures that the length of the value in <cde> falls between <#>length_min<#> and <#>length_max<#>, satisfying conditions <#>Operator1<#> and <#>Operator2<#> for the lower and upper bounds, respectively."
+DQRF0006_02,Similar to DQRF0006 but includes an additional check that <cde> is not null. This ensures non-null values within the specified length range.
+DQRF0006_03,"Validates that the length of <cde> is exactly 1 character, ensuring it meets both lower (>= 1) and upper (<= 1) bounds."
+DQRF0010,"Checks if the value in <cde> contains only uppercase alphanumeric characters (A-Z, 0-9) with no special characters or spaces."
+DQRF0015,"Similar to DQRF0010 but allows the inclusion of the Spanish letter ""Ñ"". Ensures uppercase alphanumeric values."
+DQRF0026,"Validates that <cde> starts with uppercase alphanumeric characters (A-Z, 0-9, Ñ) and may optionally end with spaces or uppercase alphanumeric characters."
+DQRF0028,"Ensures <cde> contains only uppercase alphabetic characters (A-Z, Ñ) and optional spaces."
+DQRF0029,Checks if the value in <cde> is NaN (not a number). This rule ensures proper identification of missing values.
+DQRF0030,"Validates that the value in <cde> contains at least three consecutive ""A"" characters."
+DQRF0031,"Ensures that <cde> contains the substring ""ING"" surrounded by any two characters on either side (e.g., ""xINGx"")."
+DQRF0033,"Validates that <cde> contains exactly one character from the range A-H, J-N, P-X, Z, and their lowercase counterparts, including ""Ñ"" and ""ñ""."
+DQRF0034,"Similar to DQRF0030 but explicitly checks for at least three consecutive ""A"" characters in <cde>."
+DQRF0037,Applies a regex pattern (<#>pattern<#>) to validate the value in <cde>. Null values are replaced with an empty string before applying the regex.
+DQRF0037_01,"Similar to DQRF0037, validates <cde> against the provided regex pattern (<#>pattern<#>), replacing nulls with an empty string."
+DQRF0037_02,"Ensures <cde> matches the regex pattern ^[A-ZÑ0-9]+[A-ZÑ0-9 -/]*$, allowing uppercase alphanumerics, ""Ñ"", and optional spaces or specific special characters (e.g., -, /). Replaces incorrect encoding for ""Ñ"" (Ã‘Â‘) before validation."
+DQRF0037_03,"Ensures that <cde> contains only uppercase alphabetic characters (A-Z) and spaces. If <cde> is empty or null, the rule passes."
+DQRF0037_04,Applies a regex pattern (<#>pattern<#>) to validate <cde> only if it is not null and non-empty. Null or empty values are considered valid by default.
+DQRF0037_05,Validates <cde> against a regex pattern (<#>pattern<#>) after stripping whitespace. Replaces null values with an empty string before validation.
+DQRF0037_5,"Ensures <cde> matches a regex pattern (<#>pattern<#>) only if <#>Column1<#> belongs to a specified list (<#>lista<#>). Otherwise, the rule passes without validation."
+DQRF0038,Ensures that <cde> does not match the specified regex pattern (<#>pattern<#>). Null values are replaced with an empty string before applying the pattern.
+DQRF0038_01,"Similar to DQRF0038, ensures <cde> does not match the specified regex pattern (<#>pattern<#>). Null values are handled as empty strings."
+DQRF0039,Validates that <cde> matches a regex pattern (<#>Pattern<#>) only if <#>Column1<#> equals <#>Fisica<#>. Ensures consistency between the field and the specified condition.
+DQRF0040,Ensures <cde> does not contain any value from a specified list (<#>Lista<#>) only when <#>Column1<#> equals the integer value <#>Fisica<#>.
+DQRF0041,Similar to DQRF0039 but ensures <cde> does not match the regex pattern (<#>Pattern<#>) when <#>Column1<#> equals the integer value <#>Fisica<#>.
+DQRF0045,"Validates <cde> against one of two regex patterns depending on <#>TipoPersona<#>. If <#>TipoPersona<#> equals <#>Fisica<#>, it uses <#>patternF<#>, otherwise <#>patternM<#>. Null values are replaced with an empty string before validation."
+DQRF0069,"Checks that the length of <cde> satisfies a specified condition (<#>Operator<#> and <#>length<#>), but only if <cde> is not null or empty. Otherwise, the rule passes."
+DQRF0070,"Validates <cde> against a regex pattern (<#>pattern<#>), but only if <cde> is not null or empty. Null or empty values are considered valid by default."
+DQRF0071,Ensures that a substring from <#>Column1<#> (defined by indexes <#>indexC1S<#> and <#>indexC1E<#>) concatenated with a substring from <cde> (defined by <#>indexCDES<#> and <#>indexCDEE<#>) matches the date format <#>frmtDte1<#>. Compares this against the date in <#>Column1<#>.
+DQRF0072,"Ensures that a substring from <cde> (defined by <#>indexCDES<#> and <#>indexCDEE<#>) matches a substring from <#>Column1<#> (defined by <#>indexC1S<#> and <#>indexC1E<#>), both formatted as <#>frmtDte1<#>. Validates the consistency of the date information."
+DQRF0075,"Checks that the length of <cde> falls between <#>length_min<#> and <#>length_max<#> using conditions <#>Operator1<#> and <#>Operator2<#>, but only if <cde> is not null or empty. Otherwise, the rule passes."
+DQRF0077,"Validates that <cde> represents a valid date in the format YYYYMMDD. Checks that the year is greater than or equal to <#>year<#>, the month is between 1 and 12, and the day is between 1 and 31. Null values are replaced with '00000000' before validation."
+DQRF0078,Ensures that the year part of <cde> (first 4 digits) is less than or equal to the year part of <#>Column1<#>. Null values in <cde> are replaced with '99999999' before validation.
+DQRF0079,"Validates that a substring of <cde> (defined by <#>CDESIndex<#> and <#>CDEEIndex<#>) matches a substring of <#>Column1<#> (defined by <#>ColSIndex<#> and <#>ColEIndex<#>), but only if <cde> is not null or empty. Null or empty values pass by default."
+DQRF0080,Checks that a substring of <cde> (from <#>CDESIndex<#> to <#>CDEEIndex<#>) matches a substring of <#>Column1<#> (from <#>ColSIndex<#> to <#>ColEIndex<#>).
+DQRF0080_01,Compares substrings from <cde> (defined by <#>startIndexA<#> and <#>endIndexA<#>) and <#>Column<#> (defined by <#>startIndexB<#> and <#>endIndexB<#>) using a specified operator (<#>Operator<#>). Validation is applied only if <cde> is not null or empty. Null or empty values pass by default.
+DQRF0096,"Validates <cde> against a regex pattern (<#>pattern<#>), treating <cde> as an integer after filling null values with 0."
+DQRF0175,Ensures that <cde> does not contain any characters from a specified list (<#>Lista<#>). Returns False if any character in <#>Lista<#> is found in <cde>.
+DQRF0176,Checks that a weighted sum of <#>Column1<#> (weighted by 0.60) and <#>Column2<#> (weighted by 0.40) satisfies a specified condition (<#>Operator1<#>) when compared to <cde>. All columns are treated as floats for validation.
+DQRF0178,Ensures that <cde> does not contain a decimal part with more than a specified number of digits (<#>DecimalComplement<#>).
+DQRF0178_1,"Validates that <cde> matches a pattern representing a number with an integer part having a length between <#>MinIntVal<#> and <#>MaxIntVal<#>, and a mandatory decimal part with a length between <#>MinDecVal<#> and <#>MaxDecVal<#>."
+DQRF0178_2,"Ensures <cde> matches a pattern for a number that can optionally have a decimal part. The integer part must have a length between <#>MinIntVal<#> and <#>MaxIntVal<#>, and if present, the decimal part must have a length between <#>MinDecVal<#> and <#>MaxDecVal<#>. Allows optional negative signs."
+DQRF0178_3,Validates that <cde> is an integer with a length between <#>MinIntVal<#> and <#>MaxIntVal<#>. Allows optional negative signs.
+DQRF0185,Checks if <#>Column1<#> matches a given regex pattern (<#>pattern<#>). Null values are replaced with an empty string before applying the validation.
+DQRF0188,Ensures <#>Column1<#> does not match a given regex pattern (<#>pattern<#>). Null values are replaced with an empty string before applying the validation.
+DQRF0204,Validates <cde> against a regex pattern (<#>pattern<#>) or checks if <cde> equals a specific value (<#>value<#>). Either condition passing will satisfy the rule.
+DQRF0213,"Validates that a substring from <cde> matches a substring from <#>Column1<#> using specified indexes and a date format <#>frmtDte1<#>. If <#>Column1<#> is empty, the rule passes. Checks are applied only if both <cde> and <#>Column1<#> are not null."
+DQRF0214,Ensures that the length of the integer part of <cde> (before the decimal) satisfies a specified condition (<#>Operator1<#> and <#>length_max<#>).
+DQRF0215,"Similar to DQRF0214, but also validates that if <cde> ends with .0, the condition passes regardless of the length of the integer part."
+DQRF0226,Validates that a specific segment of <cde> (split by a separator <#>Sep<#>) matches a regex pattern (<#>pattern<#>). The segment is identified by <#>ColNumber<#>. Fails if the number of segments is less than <#>Columns<#>.
+DQRF0227,Checks if a specific segment of <cde> (split by <#>Sep<#>) matches <#>Column1<#>. Fails if the number of segments in <cde> exceeds <#>Columns<#> or if the specific segment does not match <#>Column1<#>.
+DQRF0271,Validates that a substring from <#>Column1<#> (defined by <#>indexC1S<#> and <#>indexC1E<#>) concatenated with a substring from <cde> (defined by <#>indexCDES<#> and <#>indexCDEE<#>) matches <#>Column1<#> when formatted as a date (<#>frmtDte1<#>).
+DQRF0272,Ensures that <cde> does not match the first regex pattern (<#>expression1<#>) unless it also matches the combined regex pattern of <#>expression1<#> and <#>expression2<#>.
+DQRF0273,Validates that <cde> is either null or matches a pattern for a number with an integer part (<#>MinIntVal<#> to <#>MaxIntVal<#>) and a decimal part (<#>MinDecVal<#> to <#>MaxDecVal<#>). Only checks if <cde> is convertible to a float.
+DQRF0274,"Ensures that <cde> matches a regex pattern (<#>pattern<#>), ignoring case sensitivity. Null values are replaced with an empty string before validation."
+DQRF0274_0,"Ensures that <cde> does not match a regex pattern (<#>pattern<#>), ignoring case sensitivity. Null values are replaced with an empty string before validation."
+DQRF0274_1,"Validates that <cde> does not match a regex pattern (<#>pattern<#>), ignoring case sensitivity. Similar to DQRF0274_0 but uses a different implementation style."
+DQRF0274_2,"Ensures that <cde> does not contain specific patterns like ""S/N"" (case-insensitive). Validation includes additional rules for customized patterns."
+DQRF0274_3,"Checks that <cde> does not contain any character repeated more than <#>RepeatednChars<#> times consecutively, ignoring case sensitivity."
+DQRI0106,"Ensures that <cde> falls between <#>Column2<#> and <#>Column1<#> (inclusive) if <cde> is not in a specified list (<#>Lista<#>). Otherwise, the rule passes."
+DQRI0108,Similar to DQRI0106 but enforces a strict greater-than condition for <cde> compared to <#>Column2<#>.
+DQRI0109,"Validates that <cde> falls between <#>Column2<#> and <#>Column1<#> (inclusive), and that <#>Column2<#> is greater than or equal to <#>Column3<#>. Applies only if <cde> is not in a specified list (<#>Lista<#>)."
+DQRU0004,Ensures that <cde> does not contain duplicate values.
+DQRU0004_1,"Removes duplicates from <#>Column1<#>, keeping the first occurrence after sorting by descending order."
+DQRU0127,Ensures that <cde> does not contain duplicate values. Similar to DQRU0004.
+DQRU0128,"Similar to DQRU0127, ensures that <cde> does not contain duplicate values."
+DQRU0141,"Ensures that <#>Column1<#> does not contain duplicate values, is non-null, has a non-zero length after stripping whitespace, and does not equal '-'."
+DQRU0141_1,"Similar to DQRU0141, but additionally ensures that <#>Column1<#> is not equal to 0."
+DQRU0142,"Ensures that <cde> does not contain duplicate values, is non-null, has a non-zero length after stripping whitespace, and does not equal '-'."
+DQRU0146,Ensures that rows in <data> are unique based on a specified set of columns (<#>ColumnList<#>).
+DQRU0150,"Validates that <cde> and <#>Column1<#> are both non-null, have non-zero lengths after stripping whitespace, do not equal '-', and do not have duplicate values as a pair."
+DQRU0161,Checks phonetic similarity between <cde> values and other data in <data> using a specified threshold (<#>threshold<#>).
+DQRU0211,Ensures that the value in <#>Column1<#> is not True.
+DQRV0002,Validates that <cde> satisfies a numeric comparison (<#>Operator<#> and <#>compare<#>) after being converted to a float.
+DQRV0002_01,"Ensures that <cde> satisfies two numeric comparisons, defined by <#>Operator1<#>/<#>compare1<#> and <#>Operator2<#>/<#>compare2<#>."
+DQRV0002_02,Similar to DQRV0002 but only validates one numeric comparison.
+DQRV0002_03,Checks that <cde> satisfies a comparison (<#>Operator<#> and <#>compare<#>).
+DQRV0002_04,Validates that <#>Column1<#> is not part of a specified list (<#>lista<#>).
+DQRV0002_2,Ensures that <cde> equals the value in <#>Column1<#>.
+DQRV0009,Checks if <cde> is present in a catalog (<#>catalog<#>) for a specific key (<#>key<#>).
+DQRV0009_01,"Similar to DQRV0009, ensures that <cde> exists in the specified catalog."
+DQRV0009_02,Validates that <#>Column1<#> exists in the specified catalog (<#>catalog<#>).
+DQRV0009_03,Ensures that <#>RecordID<#> (converted to float) is not present in a catalog (<#>catalog<#>) after being converted to float.
+DQRV0009_04,"Checks if <cde> is present in a catalog for a specific key, but only when <#>Column1<#> is in a specified list (<#>Lista<#>)."
+DQRV0009_05,Ensures that <cde> exists in a catalog if <#>Column1<#> is not in a list (<#>Lista1<#>) or <#>Column2<#> is in another list (<#>Lista2<#>).
+DQRV0009_06,Combines conditions to ensure <cde> exists in a catalog and <#>Column1<#> is not in a specified list (<#>Lista1<#>).
+DQRV0009_07,Merges <data> with a catalog and validates that the mapped value from the catalog for <#>Column1<#> matches <#>Column2<#>.
+DQRV0009_08,Similar to DQRV0009_07 but validates the mapping using a dictionary of expected values for <#>Column1<#> and <#>Column2<#>.
+DQRV0014,Ensures that <cde> matches a numeric format with up to 14 digits before the decimal and exactly 2 digits after.
+DQRV0016,Validates that <cde> equals the value of compare.
+DQRV0019,Checks if <cde> is a valid date in the format <#>frmtDte<#> using a date validation function.
+DQRV0020,"Compares <cde> with <#>Column1<#> as dates, using formats <#>frmtDte1<#> and <#>frmtDte2<#>."
+DQRV0022,"Ensures that <cde> is one of the specified values: 'A', 'B', 'C', or 'D'."
+DQRV0023,Checks if <cde> is part of a specified list (<#>Lista<#>).
+DQRV0023_1,Validates that <#>Column1<#> is part of a specified list (<#>Lista<#>).
+DQRV0023_2,Ensures that <cde> is not part of a specified list (<#>Lista<#>).
+DQRV0024,"Ensures that if <cde> equals <#>TipoPersona<#>, the first character of <#>Column1<#> does not equal <#>char<#>."
+DQRV0032,Validates that <cde> contains specific characters as defined by the business logic.

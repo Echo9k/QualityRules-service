@@ -1,0 +1,12 @@
+regexDateYYYYMM|'^[0-9]{4}[0-9]{2}'|Check format Date with pattern YYYYMM, Example 202006
+regexDecimalOnly|'^[0-9]+\.[0-9]$'|
+regexDecimalOnly2|'[0-9]+\.[0-9]{2}$'|
+regexDecimalOnly3|'^[0-9]+\.[0-9]{1,2}$'|
+regexDecimalOnly4|'^[0-9]+\.[0-9]{1,6}$'|
+regexDecimalOnly5|'^-?[0-9]+\.[0-9]{1,2}$'|
+regexDigitsOnly1|'^[0-9 ]+$'|
+regexDigitsAndBlank|'^[0-9 ]*$'|
+regexDigitsOnly2|'^[0-9X]+$'|X is used when there is no value
+regexDigitsOnly|'^[0-9]+$'|
+regexDateDD/MM/YYYY|'^[0-9]{2}/[0-9]{2}/[0-9]{4}'|Check format Date with pattern DD/MM/YYYY, Example 29/04/2024
+regexDateDDMMMYYYY|'^[0-9]{2}[A-Za-z]{3}[0-9]{4}'|Check format Date with pattern DDMMMYYY, Example 01Jan2020
