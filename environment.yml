@@ -1,0 +1,20 @@
+name: qrs
+channels:
+    - defaults
+    - conda-forge
+dependencies:
+    - numpy
+    - pandas>=2.0.3
+    - transformers>=4.32.0
+    - pytorch>=2.0.1
+    - faiss-cpu>=1.7.4
+    - scikit-learn
+    - fastparquet
+    - fastapi
+    - uvicorn
+    - pyyaml
+    - openpyxl
+    - tabulate
+    - pip
+    pip:
+     - sentence-transformers
