@@ -1,21 +1,22 @@
 name: qrs
 channels:
-    - defaults
-    - conda-forge
+  - defaults
+  - conda-forge
 dependencies:
-    - numpy
-    - faiss-cpu>=1.7.4
-    - scikit-learn
-    - fastparquet
-    - uvicorn
-    - pyyaml
-    - openpyxl
-    - tabulate
-    - pip
-    pip:
-     - sentence-transformers
-     - fastapi
-     - pandas>=2.0.3
-     - transformers>=4.32.0
-     - pytorch>=2.0.1
-     - streamlit
+  - python>=3.11
+  - numpy
+  - pandas
+  - scikit-learn
+  - fastparquet
+  - uvicorn
+  - pyyaml
+  - openpyxl
+  - tabulate
+  - pip
+  - pytorch
+  - pip:
+    - sentence-transformers
+    - fastapi
+    - transformers
+    - streamlit
+    - faiss-cpu
